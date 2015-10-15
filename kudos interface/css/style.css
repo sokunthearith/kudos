@@ -1,0 +1,49 @@
+body{
+    width: 600px;
+    height: 400px;
+    margin: 0px auto;
+}
+.like{
+}
+.like.dodgerblue{
+    color: dodgerblue;
+}
+.heart{
+}
+.heart.red{
+    color: red;
+}
+#container{
+    margin-top: 81px;
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: url("../img/kudos_bac.jpg") no-repeat;
+}
+.opacities{
+    opacity: 0.7;
+}
+input.btn.btn-success.pull-right.button-submit {
+    position: absolute;
+    bottom: 110px;
+    right: 12px;
+}
+#project-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+#project-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+}
+#project-icon1 {
+    float: left;
+    height: 32px;
+    width: 32px;
+}
+#project-description {
+    margin: 0;
+    padding: 0;
+}

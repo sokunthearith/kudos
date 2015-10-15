@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kudos</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container" id="container">
+        <form>
+            <div class="row">
+               <div class="col-xs-6 pull-right">
+                   <h2>Kudos</h2>
+               </div>
+                <div class="col-xs-6">
+                    <h4 class="control-label">From:</h4>
+                    <img id="project-icon" src="" class="ui-state-default fa fa-user fa-2x" alt="">
+                    <input id="filter-from">
+                </div>
+            </div>
+            <div class="row" style="padding-bottom:10px;">
+                <div class="col-xs-12">
+                    <div class="col-xs-offset-2">
+                        <h4 class="control-label">Description:</h4>
+                        <textarea class="opacities" rows="4" cols="39" placeholder="your commend" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-offset-2 form-group" style="width:45%;">
+                    <h4 class="control-label">To:</h4>
+                <img id="project-icon1" src="" class="ui-state-default fa fa-user fa-2x" alt="">
+                <input id="filter-to">
+                </div>
+                <input type="submit" value="Send" class="btn btn-success pull-right button-submit"/>
+        </form>
+    </div>
+    <!--<script src="js/jquery.min.js"></script>-->
+    <!--<script src="js/Jquery.js"></script>-->
+    <script>
+        $(function() {
+            var projects = [
+                {
+                    value: "Bonnaka Mao",
+                    icon: "../img/Bonnaka Mao.jpg"
+                },
+                {
+                    value: "Chantheoun Kimthy",
+                    icon: "../img/Chantheoun Kimthy.jpg"
+                },
+                {
+                    value: "Chanthorn Ngeth",
+                    icon: "../img/Chanthorn Ngeth.jpg"
+                },
+                {
+                    value: "Chanthou Nim",
+                    icon: "../img/Chanthou Nim.jpg"
+                },
+                {
+                    value: "Chhengleap Soem",
+                    icon: "../img/Chhengleap Soem.jpg"
+                },
+                {
+                    value: "Chivy Lim",
+                    icon: "../img/Chivy Lim.jpg"
+                },
+
+                {
+                    value: "Christoph Luthy",
+                    icon: "../img/Christoph Luthy.jpg"
+                },
+                {
+                    value: "Danet Kroeng",
+                    icon: "../img/Danet Kroeng.jpg"
+                },
+                {
+                    value: "Dominik Stankowski",
+                    icon: "../img/Dominik Stankowski.jpg"
+                },
+                {
+                    value: "Jon Bowers",
+                    icon: "../img/Jon Bowers.jpg"
+                },
+                {
+                    value: "Leap Sok",
+                    icon: "../img/Leap Sok.jpg"
+                },
+                {
+                    value: "Man Math",
+                    icon: "../img/Man Math.jpg"
+                },
+                {
+                    value: "Mary Hui Luthy",
+                    icon: "../img/Mary Hui Luthy.jpg"
+                },
+
+                {
+                    value: "Ratanak Sokhom",
+                    icon: "../img/Ratanak Sokhom.jpg"
+                },
+                {
+                    value: "Ratha Heang",
+                    icon: "../img/Ratha Heang.jpg"
+                },
+                {
+                    value: "Rayuth You",
+                    icon: "../img/Rayuth You.jpg"
+                },
+                {
+                    value: "Sengchheang Chhun",
+                    icon: "../img/Sengchheang Chhun.jpg"
+                },
+                {
+                    value: "Simon Gadient",
+                    icon: "../img/Simon Gadient.jpg"
+                },
+                {
+                    value: "Sok Proem",
+                    icon: "../img/Sok Proem.jpg"
+                },
+                {
+                    value: "Somaly Nol",
+                    icon: "../img/Somaly Nol.jpg"
+                },
+                {
+                    value: "Sothea Mean",
+                    icon: "../img/Sothea Mean.jpg"
+                },
+                {
+                    value: "Sovandy Chin",
+                    icon: "../img/Sovandy Chin.jpg"
+                },
+                {
+                    value: "Sreyleak Thux",
+                    icon: "../img/Sreyleak Thux.jpg"
+                },
+                {
+                    value: "Sreyneang Pok",
+                    icon: "../img/Sreyneang Pok.jpg"
+                },
+                {
+                    value: "Visay Keo",
+                    icon: "../img/Visay Keo.jpg"
+                },
+                {
+                    value: "Bunhok",
+                    icon: "../img/Bunhok.jpg"
+                },
+                {
+                    value: "Bunthon",
+                    icon: "../img/Bunthon.jpg"
+                },
+
+                {
+                    value: "Long Chun",
+                    icon: "../img/Long Chun.jpg"
+                },
+
+                {
+                    value: "Chomnit",
+                    icon: "../img/Chomnit.jpg"
+                },
+                {
+                    value: "Naseat",
+                    icon: "../img/Naseat.jpg"
+                }
+            ];
+
+            var filterFrom = $("#filter-from");
+            var filterTo = $("#filter-to");
+
+            filterFrom.focus( function() {
+                filterFrom.autocomplete({
+                    minLength: 0,
+                    source: projects,
+                    focus: function (event, ui) {
+                        filterFrom.val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        $("#project-icon").attr("src", "img/" + ui.item.icon);
+                        return false;
+                    }
+                }).autocomplete("instance")._renderItem = function (ul, item) {
+                    return $("<li>")
+                            .append("<a>" + item.label + "<br>" + item.desc + "</a>")
+                            .appendTo(ul);
+                };
+                $('span.ui-helper-hidden-accessible').last().hide();
+            })
+
+            filterTo.focus( function() {
+                filterTo.autocomplete({
+                    minLength: 0,
+                    max:5,
+                    source: projects,
+                    focus: function (event, ui) {
+                        filterTo.val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        $("#project-icon1").attr("src", "img/" + ui.item.icon);
+                        return false;
+                    }
+                }).autocomplete("instance")._renderItem = function (ul, item) {
+                    return $("<li>")
+                            .append("<a>" + item.label + "<br>" + item.desc + "</a>")
+                            .appendTo(ul);
+                };
+                $('span.ui-helper-hidden-accessible').last().hide();
+            });
+
+        });
+
+    </script>
+</body>
+</html>
